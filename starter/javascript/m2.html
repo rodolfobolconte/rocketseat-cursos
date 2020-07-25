@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div id="ex1-div">
+        <button id="ex1-button">Quadrado Vermelho na Tela</button>
+    </div>
+    <div id="ex3-div">
+        <input type="text" name="nome">
+        <button onClick="adicionarNome()">Adicionar</button>
+    </div>
+    <script>
+        //exercicio 1
+        var botaoEx1 = document.querySelector('#ex1-button');
+        botaoEx1.onclick = function() {
+            var quadradoVermelho = document.createElement('div');
+            quadradoVermelho.style.height = '100px';
+            quadradoVermelho.style.width = '100px';
+            quadradoVermelho.style.backgroundColor = 'red';
+            quadradoVermelho.setAttribute('class', 'quadradoVermelho');
+            quadradoVermelho.onmouseover = function() {
+                quadradoVermelho.style.backgroundColor = getRandomColor();
+            }
+            
+            var divEx1 = document.querySelector('#ex1-div');
+            divEx1.appendChild(quadradoVermelho);
+        }
+
+        //exercicio 2
+        function getRandomColor() {
+            var letras = '0123456789ABCDEF';
+            var color = '#';
+            for (var i=0;i<6;i++) {
+                color += letras[Math.floor(Math.random() * 16)];
+            }
+
+            return color;
+        }
+
+        //exercicio 3
+        var nomes = ['Diego', 'Gabriel', 'Lucas'];
+        var lista = document.createElement('ul');
+        lista.setAttribute('id', 'listaNomes');
+        for (nome of nomes) {
+            var item = document.createElement('li');
+            var texto = document.createTextNode(nome);
+            item.appendChild(texto);
+            lista.appendChild(item);
+        }
+        var divEx3 = document.getElementById('ex3-div');
+        divEx3.appendChild(lista);
+
+        //exercicio 4
+        function adicionarNome() {
+            var textoInput = document.querySelector('input[name=nome]').value;
+
+            var item = document.createElement('li');
+            var texto = document.createTextNode(textoInput);
+            item.appendChild(texto);
+
+            var lista = document.getElementById('listaNomes');
+            lista.appendChild(item);
+
+            document.querySelector('input[name=nome]').value = '';
+            //textoInput.value = '';
+        }
+
+    </script>
+</body>
+</html>
