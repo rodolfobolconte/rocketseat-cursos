@@ -1,3 +1,4 @@
-import { soma } from './funcoes.js';
+import ClasseUsuario, { idade as idadeUsuario } from './funcoes.js';
 
-console.log(soma(1,3));
+ClasseUsuario.info();
+console.log(idadeUsuario);
